@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Episode 2</title>
+    <script src="https://unpkg.com/vue@3"></script>
+    <style>
+        body{
+            display: grid;
+            place-items:center;
+            padding-top: 50px;
+        }
+        button{
+            font-size:25px;
+        }
+        .text-green{
+            color:rgb(89, 165, 89);
+        }
+        .text-red{
+            color:rgb(238, 118, 118);
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+                     <!-- we can use v-bind  as colon and v-on as @ and for using the buttonClasses we have to add that class  -->
+        <!-- <button type ="btn" :class = "active? 'text-red': 'text-green' "  @:click="toggle">Click me </button> -->
+
+        <button type ="btn" :class = "active? 'text-red': 'text-green' "  v-on:click="toggle">Click me </button>
+    </div>
+    <script>
+        Vue.createApp({
+            data(){
+                return{
+                    // buttonClasses:'text-green',
+                    active :false
+                };
+            },
+            // creating methods object(custom methods )
+            methods:{
+                toggle(){
+                    // alert('toggle');
+                    // this.buttonClasses = 'text-red'
+                    // if it is true make it false if it is false make it true
+                    this.active =  ! this.active; 
+                }
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>
