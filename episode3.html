@@ -11,26 +11,68 @@
 </head>
 <body>
     <div id="app">
-        <section>
-            <h1>Assignment</h1>
-            <ul v-for="assignment in assignments ">
-                {{ assignments.name }}
+        <section v-show="inProgressAssignments.length">
+            <h1>In Progress </h1>
+            <ul>
+                <!-- .filter(...) is for not showing completed in progress list -->
+                <!-- <li v-for="assignment in assignments.filter(a => !a.complete)" 
+                    :key= "assignment.id"
+                    > -->
+
+                    <li
+                        v-for=" assignment in inProgressAssignments"
+                        :key="assignment.id" 
+                    >
+                    <label>
+                        {{ assignment.name }}
+                        <!-- v-model here for changing completed value with respect to checkbox -->
+                        <input type="checkbox" v-model="assignment.complete ">
+                    </label>
+                </li>
+            </ul>
+        </section>
+       
+        <!-- show only these section when completed assignments is more than zero  -->
+        <!-- <section  v-show ="assignments.filter(a =>a.complete).length" class="mt-8" > -->
+       <section  v-show ="completedAssignments.length" class="mt-8" > 
+            <h1>Completed </h1>
+            <ul>
+                <!-- <li v-for="assignment in assignments.filter(a =>a.complete)" 
+                    :key= "assignment.id"
+                    > -->
+                    <li v-for ="assignment in completedAssignments"
+                    :key = "assignment.id">
+                   <label>
+                        {{ assignment.name }}
+                        <input type="checkbox" v-model="assignment.complete ">
+                    </label>
+                </li>
             </ul>
         </section>
        
     </div>
     <script>
-        Vue.createApp({
+    let app = {
             data(){
                 return{
                 assignments:[
-                    {name:'1st name', complete: false},
-                    {name:'2nd name', complete: false},
-                    {name:'3rd name', complete: false},
+                    {name:'1st name', complete: false, id:1},
+                    {name:'2nd name', complete: false, id:2},
+                    {name:'3rd name', complete: false, id:3},
 
                 ]}
             },
-        }).mount('#app');
+            // new object computed
+            computed:{
+                inProgressAssignments(){
+                    return this.assignments.filter(assignment => ! assignment.complete);
+                },
+                completedAssignments(){
+                    return this.assignments.filter(assignment => assignment.complete);
+                }
+            }
+         };
+         Vue.createApp(app).mount('#app');
         
     </script>
 </body>
