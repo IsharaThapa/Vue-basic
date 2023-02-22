@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter app</title>
+    <script src="https://unpkg.com/vue@3"></script>
+    <style>
+        .content{
+            display:grid;
+            place-items: center;
+        }
+        h3.heading{
+            font-size: 30px;
+            font-family:'Times New Roman', Times, serif;
+            font-weight:700;
+        }
+        h1.value{
+            font-size: 120px;
+            font-weight:500;
+            font-family:Verdana, Geneva, Tahoma, sans-serif;
+            margin:0px;
+        }
+        .counter-btn{
+            width:600px;
+            display:flex;
+            justify-content: space-evenly;
+            margin-top: 30px;
+        }
+        button{
+            font-size: 30px;
+            border-radius: 11px;
+            padding:7px 12px;
+        }
+    </style>
+
+</head>
+<body>
+   <div id="app">
+       <div class="content">
+            <h3 class="heading">COUNTER <h1 class="value">{{ counter}}</h1></h3>
+            <div class="counter-btn">
+                <button type = "submit" class="increment"  @:click = "increment">Increment</button>
+                <button type = "submit" class="reset"  @:click= "reset">Reset</button>
+                <button type = "submit" class="decrement"  @:click = "decrement">Decrement</button>
+            </div>
+       </div>
+   </div>
+
+    <script>
+        
+        Vue.createApp({
+            data(){
+                return{
+                   counter:0,
+                };
+            },
+                methods:{
+                    increment(){
+                     this.counter += 1 ;
+                    },
+                    reset(){
+                    this.counter =0;
+                    },
+                    decrement(){
+                     this.counter -= 1;
+                    }
+                 }
+                }).mount('#app');
+            
+
+    </script>
+        
+</body>
+</html>
