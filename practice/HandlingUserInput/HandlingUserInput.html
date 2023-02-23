@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Handling User Input</title>
+    <script src="https://unpkg.com/vue@3"></script>
+
+</head>
+<body>
+    <div id="app">
+
+        <p>
+            <input type ="text" v-model="content">
+        </p>
+        </div></br>
+        <button @:click="reverse">Reverse Message</button>
+        <button @:click ="content +='!'">Append"!"</button>
+
+    </div>
+    <script>
+        Vue.createApp({
+            data(){
+                return{
+                    content:'Hello World'
+                };
+            },
+            methods:{
+                reverse(){
+                    this.content = this.content.split('').reverse().join('')
+                }
+            }
+        }).mount('#app')
+        
+
+    </script>
+    
+</body>
+</html>

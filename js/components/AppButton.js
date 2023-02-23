@@ -8,6 +8,9 @@ export default{
     // mounted(){
     //     alert('hello');
     // }
+    props:{
+        type:string
+    },
     data(){
         return{
             // proessing true then button not clickable
