@@ -10,30 +10,43 @@
 </head>
 <body>
     <div id="app">
-        <button type="submit" :class="list"  @click="toggle">Toggle List</button>
+        <button type="submit"  :class="show" @click="toggle">Toggle List</button>
         <button type="submit" @click="push_number">Push Number</button>
         <button type="submit" @click="pop_number">Pop Number</button>
         <button type="submit" @click="reverse_list">Reverse List</button>
+        <p >
+            <ul v-if=" show && list.length">
+                <li  v-for="item of list">
+                    {{item}}
+                </li>
+            </ul>
+            <p v-else-if = "list.length">List is not empty,but hidden.</p>
+            <p v-else>List is empty.</p>
+
+        </p>
+
     </div>
     <script>
         let app = {
             data(){
                 return{
+                    show:true,
                     list:[1,2,3]
                 };
             },
             methods:{
                toggle(){
-                    this.list.show
+                    this.show = !this.show
                },
                push_number(){
-
+                // console.log(this.list.push(this.list.length - 1));
+                     this.list.push(this.list.length + 1)
                },
                pop_number(){
-
+                    this.list.pop(this.list.length - 1)
                },
                reverse_list(){
-
+                this.list.reverse()
                } 
             }
         }
