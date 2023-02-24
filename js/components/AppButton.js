@@ -1,7 +1,10 @@
 export default{
 
     template:`
-    <button class="bg-grey border rounded disabled:cursor-not-allowed" :disabled="processing">
+    <button 
+    class="bg-grey border rounded disabled:cursor-not-allowed" 
+    :disabled="processing"
+    >
         <slot/> 
         </button>
     `,
@@ -9,12 +12,12 @@ export default{
     //     alert('hello');
     // }
     props:{
-        type:string
+        type: String
     },
     data(){
         return{
             // proessing true then button not clickable
-            processing:true
+            processing:false
         }
     }
 }

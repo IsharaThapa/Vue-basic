@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attribute Binding</title>
+    <script src="https://unpkg.com/vue@3"></script>
+    <style>
+        .red{
+            color:red;
+        }
+        .green{
+            color:green;
+        }
+
+    </style>
+
+</head>
+<body>
+    <div id="app">
+        <h3 :title="message">Hover your mouse to see dynamically bound title</h3>
+        <h3 :class="active?'red':'green' " @click="toggle">This should be red... but click me to toggle it.</h3>
+    </div>
+    <script>
+        Vue.createApp({
+            data(){
+                return{
+                    message:'hello World',
+                    active:true
+                };
+            },
+            methods:{
+                toggle(){
+                    this.active = !this.active
+                }
+            }
+        }).mount("#app")
+    </script>
+</body>
+</html>
