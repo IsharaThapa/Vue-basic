@@ -6,24 +6,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://unpkg.com/vue@3"></script>
-
+    <style>
+        body{
+            display:flex;
+            justify-content: center;
+        }
+        .btn{
+            padding-top: 50px;
+            display: flex;
+            justify-content: space-between;
+            width: 500px;
+        }
+        button{
+            font-size: 18px;
+            border-radius: 11px;
+            background-color: bisque;
+            padding: 5px 10px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+        .list-section{
+            display: flex;
+            justify-content: center;
+            padding-top: 20px;
+        }
+        .list_item{
+            font-size: 25px;
+            font-weight: 300;
+        }
+       
+    </style>
 </head>
 <body>
     <div id="app">
+    <div class="btn">
         <button type="submit"  :class="show" @click="toggle">Toggle List</button>
         <button type="submit" @click="push_number">Push Number</button>
         <button type="submit" @click="pop_number">Pop Number</button>
         <button type="submit" @click="reverse_list">Reverse List</button>
-        <p >
+    </div>
+        <div class="list-section">
+
             <ul v-if=" show && list.length">
-                <li  v-for="item of list">
+                <li  v-for="item of list" class="list_item">
                     {{item}}
                 </li>
             </ul>
             <p v-else-if = "list.length">List is not empty,but hidden.</p>
             <p v-else>List is empty.</p>
+        </div>
 
-        </p>
+
+      
 
     </div>
     <script>
